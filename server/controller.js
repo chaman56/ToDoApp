@@ -11,9 +11,6 @@ exports.signup = (req,res)=>{
     username : req.body.username,
     email : req.body.email,
     password : req.body.password,
-    tasks : [
-       "This is a sample Task."
-    ]
   })
 
   user.save(user).then(user =>{
