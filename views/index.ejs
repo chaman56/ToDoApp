@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body{
+    background-color: rgb(242, 242, 242);
+}
+header{
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    height: 50px;
+    width: 100%;
+    background-color: rgb(230, 230, 230);
+    box-shadow: 0px 0px 5px  rgba(182, 182, 182, 0.678);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 1rem;
+    border-bottom: 1px solid gray;
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    height: 36px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border-top: 1px solid gray;
+}
+footer{
+    max-width: 500px;
+    position: fixed;
+    bottom: 0;
+    height: 35px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    justify-content: space-around;
+}
+footer button{
+    width: 35px;
+    height: 35px;
+    border: none;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+footer img{
+    height: 34px;
+}
+.main{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+main{
+    min-width: 300px;
+    max-width: 900px;
+    margin-top: 50px;
+    padding: 1rem;
+    width: 70%;
+    padding-bottom: 100px;
+}
+#input{
+    position: fixed;
+    bottom: 40px;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#input .arrow{
+    position: relative;
+}
+#input .arrow img{
+    position: absolute;
+    top: -11px;
+    left: 10px;
+}
+#input input{
+    max-width: 500px;
+    height: 30px;
+    width: 60%;
+    border-radius: 20px;
+    padding: 1rem;
+    padding-left: 35px;
+    font-size: 1rem;
+}
+#input button{
+    background-color: white;
+    border: none;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#tasks{
+    margin: .5rem;
+    padding: .5rem 0;
+    border: 1px solid lavender;
+    background: white;
+    min-height: 50vh;
+    border-radius: 5px;
+}
+#tasks:hover{
+    border: 1px solid rgb(187, 186, 186);
+}
+#tasks h3{
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.taskbox{
+    position: relative;
+    min-height: 30px;
+    margin: 1px 10px;
+    display: flex;
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: 5px;
+    background: linear-gradient(to left, rgb(122, 139, 189),rgb(106, 94, 179));
+}
+.taskbox:hover, .taskbox:focus {
+    transform: scale(1.005);
+    box-shadow: 1px 1px 3px gray;
+}
+.task{
+    margin-left: 1rem;
+    font-size: 1.1rem;
+    padding-right: 20px;
+}
+.checkbox:hover , .checkbox:focus{
+    transform: scale(1.3);
+}
+#completedTasks .taskbox:hover{
+    transform: scale(1.001);
+    box-shadow: 1px 1px 3px gray;
+}
+.darkbtn{
+    text-decoration: none;
+    color: white;
+    background-color: rgb(0, 58, 173);
+    padding: .5rem;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+#profilebtn{
+    background: transparent;
+    color: black;
+}
+#profile{
+    z-index: 100;
+    position: absolute;
+    left: 8.5rem;
+    top: 41px;
+    background: white;
+    border: 1px solid rgb(227, 227, 227);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 200px;
+    display: none;
+    padding-top: 1rem;
+    line-height: 30px;
+}
+#dlt{
+    position: absolute;
+    right: 2px;
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    padding: 3px;
+    border: none;
+    color: white;
+    background-color: brown;
+}
+    </style>
+    <title>To Do App</title>
+  </head>
+  <body>
+    <section class="header">
+      <header>
+        <h2 style="color: rgb(0, 58, 173);">Hi <%= user[0].name %> !</h2>
+        <div style="position: relative;">
+            <a class="darkbtn" href="/login">Switch Account</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button id="profilebtn" class="darkbtn" style="background: transparent;color: black;" onclick="dropdown()"><%= user[0].username %> <i class="fa-solid fa-caret-down"></i></button>
+            <div id="profile">
+                <i class="fa-solid fa-user"></i>
+                <%= user[0].username %> <br>
+                <p style="font-size: 14px;"><%= user[0].email %></p><br>
+            </div>
+        </div>
+      </header>
+    </section>
+    <section class="main">
+      <main>
+        <div id="tasks" class="tasks">
+            <h3>Here are your list of works to do!</h3>
+            <% for(var i = 0; i<user[0].tasks.length; i++){ %>
+                <div class="taskbox">
+                    <input type="checkbox" class="checkbox" id="checkbox" onchange="checkfn(this)" ischecked="2" index="<%= i %>" data-id="<%= user[0]._id %>">
+                    <p class="task"><%= user[0].tasks[i].task %></p>
+                    <button type="button" onclick="dlte(this)" id="dlt" index="<%= i %>" data-id="<%= user[0]._id %>" >X</button>
+                </div>
+            <% } %>
+            <script>
+                function checkfn(e){
+                    setTimeout(function(){
+                        if(e.checked){
+                            e.setAttribute("ischecked","1")
+                            completedTasks.appendChild(e.parentNode);
+                        }else{
+                            e.setAttribute("ischecked","2")
+                            tasks.appendChild(e.parentNode);
+                        }     
+                    },100)          
+                }
+                function dlte(e){
+                    e.parentNode.remove();
+                }
+            </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+            <script>
+                $ondelete = $(".tasks #dlt");
+                $ondelete.click(function(){
+                    var id = $(this).attr("data-id");
+                    var index = $(this).attr("index");
+                    var request = {
+                        "url" : `http://localhost:3000/api/users/${id}/${index}`,
+                        "method" : 'delete',
+                    }
+                    $.ajax(request).done(function(response){
+                        location.reload();
+                    })
+                })
+                $oncheck = $(".tasks #checkbox");
+                $oncheck.on('change',function(){
+                    var id = $(this).attr("data-id");
+                    var index = $(this).attr("index");
+                    var request = {
+                        "url" : `http://localhost:3000/api/users/task/${id}/${index}`,
+                        "method" : 'put',
+                    }
+                    $.ajax(request).done(function(response){
+                        location.reload();
+                    })
+                })
+            </script>
+        </div>
+        <div id="completedTasks"></div>
+      </main>
+    </section>
+    <form method="put" id="add_task">
+        <section id="input">
+            <div class="arrow"><img src="images/paper-plane.png" alt="" height="25px"></div>
+            <input type="hidden" name="id" value="<%= user[0]._id%>">
+            <input type="text" name="task" placeholder=" Add a task... " id="todoinput" >
+            <button onclick="createtask()" style="padding: 5px;border: 1px solid black;background: rgb(58, 58, 157);border-radius: 8px;color: white;">Add</button>
+        </section>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        let ajx;
+        $("#add_task").submit(async function(event){
+            event.preventDefault();
+            var unindexed_array = $(this).serializeArray();
+            var data = {};
+            $.map(unindexed_array,function(n,i){
+                data[n['name']] = n['value'];
+            })
+            var request = {
+                "url" : `http://localhost:3000/api/users/<%= user[0]._id%>`,
+                "method" : 'put',
+                "data" : data
+            } 
+            ajx = $.ajax(request).done(function(response){
+                console.log("task added successfully!")
+            })
+        })
+        function callajx(){
+            if(ajx!=undefined){
+                todoinput.value = '';
+                ajx=undefined;
+            }
+        }
+        const callingajx = setInterval(callajx, 200)
+        const tasks = document.getElementById("tasks");
+        const todoinput = document.getElementById("todoinput");
+        const completedTasks = document.getElementById("completedTasks")
+        const checkbx = document.getElementById("checkbox")
+        function createtask(){
+            let taskbox = document.createElement("div");
+            taskbox.setAttribute("class","taskbox");
+            tasks.appendChild(taskbox);
+            let task = document.createElement("div");
+            task.setAttribute("class","task");
+            task.innerHTML = todoinput.value;
+            let check = document .createElement("input");
+            check.type = "checkbox";
+            check.setAttribute("class","checkbox")
+            taskbox.appendChild(check);
+            taskbox.appendChild(task);
+            dlt = document.createElement("button");
+            dlt.setAttribute("id","dlt");
+            dlt.innerHTML = "X";
+            taskbox.appendChild(dlt);
+            dlt.addEventListener("click",function(){
+                this.parentNode.remove();
+            })
+            //todoinput.innerHTML = '';
+            check.addEventListener("change", function(){
+                if(this.checked){
+                    this.setAttribute("ischecked","1");
+                    completedTasks.appendChild(this.parentElement);
+                }else{
+                    this.setAttribute("ischecked","2");
+                    tasks.appendChild(this.parentElement);
+                }
+            })
+        }
+        const profile = document.getElementById("profile")
+        let profilebtn = document.getElementById("profilebtn")
+        
+        function dropdown(){
+            profile.style.display = "flex";
+            profilebtn.setAttribute("onclick","dropup()")
+        }
+        function dropup(){
+            profile.style.display = "none";
+            profilebtn.setAttribute("onclick","dropdown()")
+        }
+      </script>
+  </body>
+</html>

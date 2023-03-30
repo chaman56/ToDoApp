@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+</head>
+<body>
+  <div class="container">
+  <div>
+    <label for="name">Name : </label>
+    <input class="name" type="text" name="name" placeholder="James Bond">
+  </div>
+  <div>
+  <label for="email">Email : </label><br>
+  <input type="text" name="email" placeholder="example@gmail.com">
+  </div>
+  <div>
+  <label for="password">Password : </label><br>
+  <input type="password" name="password">
+  </div>
+  <div>
+    <button type="submit">Sign Up</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="">Login?</a>
+  </div>
+  
+  </div>
+  <style>
+    body{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 90vh;
+      background-color: aqua;
+    }
+    .container{
+      width: 250px;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      border: 1px solid gray;
+      border-radius: 10px;
+      background: rgb(83, 158, 255)
+    }
+    input{
+      height: 30px;
+      max-width: 200px;
+      border-radius: 5px;
+      border: none;
+    }
+    .name{
+      width: 115px;
+    }
+    
+  </style>
+</body>
+</html>
