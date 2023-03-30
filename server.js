@@ -38,11 +38,15 @@ app.get('/signup', (req,res)=>{
   res.render('signup')
 })
 
+
 app.post('/api/users', controller.signup);
 app.get('/api/users', controller.login);
 app.put('/api/users/:id', controller.addtask)
 app.delete('/api/users/:id/:index', controller.delete)
 app.put('/api/users/task/:id/:index', controller.updatetask);
-app.listen(process.env.url ||3000 , ()=>{
+
+
+const PORT = process.env.PORT || 3000
+app.listen(PORT , ()=>{
   console.log("Listening on http://localhost:3000")
 })

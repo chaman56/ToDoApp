@@ -238,12 +238,13 @@ main{
             </script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
             <script>
+                const BASE_URL = 'http://localhost:3000'
                 $ondelete = $(".tasks #dlt");
                 $ondelete.click(function(){
                     var id = $(this).attr("data-id");
                     var index = $(this).attr("index");
                     var request = {
-                        "url" : `http://localhost:3000/api/users/${id}/${index}`,
+                        "url" : `${BASE_URL}/api/users/${id}/${index}`,
                         "method" : 'delete',
                     }
                     $.ajax(request).done(function(response){
@@ -255,7 +256,7 @@ main{
                     var id = $(this).attr("data-id");
                     var index = $(this).attr("index");
                     var request = {
-                        "url" : `http://localhost:3000/api/users/task/${id}/${index}`,
+                        "url" : `${BASE_URL}/api/users/task/${id}/${index}`,
                         "method" : 'put',
                     }
                     $.ajax(request).done(function(response){
@@ -269,7 +270,7 @@ main{
     </section>
     <form method="put" id="add_task">
         <section id="input">
-            <div class="arrow"><img src="images/paper-plane.png" alt="" height="25px"></div>
+            <div class="arrow"><img src="https://github.com/chaman56/ToDoApp/blob/main/views/images/paper-plane.png" alt="" height="25px" style="z-index: 1000;"></div>
             <input type="hidden" name="id" value="<%= user[0]._id%>">
             <input type="text" name="task" placeholder=" Add a task... " id="todoinput" >
             <button onclick="createtask()" style="padding: 5px;border: 1px solid black;background: rgb(58, 58, 157);border-radius: 8px;color: white;">Add</button>
@@ -286,7 +287,7 @@ main{
                 data[n['name']] = n['value'];
             })
             var request = {
-                "url" : `http://localhost:3000/api/users/<%= user[0]._id%>`,
+                "url" : `${BASE_URL}/api/users/<%= user[0]._id%>`,
                 "method" : 'put',
                 "data" : data
             } 
