@@ -13,7 +13,7 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 body{
-    background-color: rgb(242, 242, 242);
+    background-color: rgb(248, 248, 248);
 }
 header{
     z-index: 100;
@@ -21,13 +21,14 @@ header{
     top: 0;
     height: 50px;
     width: 100%;
-    background-color: rgb(230, 230, 230);
-    box-shadow: 0px 0px 5px  rgba(182, 182, 182, 0.678);
+    background-color: rgb(245, 245, 245);
+    box-shadow: 0px 0px 5px  rgba(218, 216, 216, 0.678);
     display: flex;
     align-items: center;
     justify-content: space-around;
     padding: 0 1rem;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid rgba(212, 212, 212, 0.829);
+    flex-wrap: nowrap;
 }
 .footer{
     position: fixed;
@@ -74,7 +75,7 @@ main{
     max-width: 900px;
     margin-top: 50px;
     padding: 1rem;
-    width: 70%;
+    width: 80%;
     padding-bottom: 100px;
 }
 #input{
@@ -128,13 +129,14 @@ main{
 
 .taskbox{
     position: relative;
-    min-height: 30px;
-    margin: 1px 10px;
+    min-height: 40px;
+    margin: 3px 10px;
     display: flex;
     align-items: center;
     padding: 2px 10px;
     border-radius: 5px;
-    background: linear-gradient(to left, rgb(122, 139, 189),rgb(106, 94, 179));
+    background: linear-gradient(to left, rgb(38, 185, 21),rgb(19, 179, 19));
+    border: 1px solid black;
 }
 .taskbox:hover, .taskbox:focus {
     transform: scale(1.005);
@@ -155,10 +157,11 @@ main{
 .darkbtn{
     text-decoration: none;
     color: white;
-    background-color: rgb(0, 58, 173);
+    background-color: rgb(37, 191, 83);
     padding: .5rem;
     border: 1px solid black;
     border-radius: 10px;
+    white-space: nowrap;
 }
 #profilebtn{
     background: transparent;
@@ -191,14 +194,23 @@ main{
     color: white;
     background-color: brown;
 }
+@media only screen and (max-width: 600px){
+    main{
+        width: 95%;
+    }
+    #profile{
+        left: auto;
+        right: -10px;
+    }
+}
     </style>
     <title>To Do App</title>
   </head>
   <body>
     <section class="header">
       <header>
-        <h2 style="color: rgb(0, 58, 173);">Hi <%= user[0].name %> !</h2>
-        <div style="position: relative;">
+        <h2 style="color: rgb(37, 158, 57);white-space: nowrap;">Hi <%= user[0].name %> !  &nbsp;</h2>
+        <div style="position: relative;display: flex;white-space: nowrap;">
             <a class="darkbtn" href="/login">Switch Account</a>&nbsp;&nbsp;&nbsp;&nbsp;
             <button id="profilebtn" class="darkbtn" style="background: transparent;color: black;" onclick="dropdown()"><%= user[0].username %> <i class="fa-solid fa-caret-down"></i></button>
             <div id="profile">
@@ -238,7 +250,7 @@ main{
             </script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
             <script>
-                const BASE_URL = 'https://todoapp-q1vi.onrender.com'
+                const BASE_URL = 'http://localhost:3000'
                 $ondelete = $(".tasks #dlt");
                 $ondelete.click(function(){
                     var id = $(this).attr("data-id");
@@ -273,7 +285,7 @@ main{
             <div class="arrow"><img src="https://github.com/chaman56/ToDoApp/blob/main/views/images/paper-plane.png" alt="" height="25px" style="z-index: 1000;"></div>
             <input type="hidden" name="id" value="<%= user[0]._id%>">
             <input type="text" name="task" placeholder=" Add a task... " id="todoinput" >
-            <button onclick="createtask()" style="padding: 5px;border: 1px solid black;background: rgb(58, 58, 157);border-radius: 8px;color: white;">Add</button>
+            <button onclick="createtask()" style="padding: 5px;border: 1px solid black;background: rgb(52, 190, 34);border-radius: 8px;color: white;">Add</button>
         </section>
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

@@ -7,15 +7,25 @@
   <title>Sign Up</title>
 </head>
 <body>
+  <div class="left">
+    <div class="contain">
+      <div class="h2" style="font-size: small;"><span style="color:rgb(31, 93, 31)">|</span> TODOAPP</div>
+      <h1>Stay on top of your day with To Do List app!</h1>
+      <p>Welcome to our innovative and user-friendly To Do List app, designed to 
+        help you organize and streamline your daily tasks and increase your productivity!</p>
+      <a class="darkbtn" href="/signup">Get Started!</a>&nbsp;&nbsp;
+    </div>
+  </div>
+  <div class="right">
   <form action="api/users" method="post">
     <div class="container">
       <div>
         <label for="name">Name : </label>
-        <input class="name" type="text" name="name" placeholder="James Bond">
+        <input class="name" type="text" name="name" placeholder="John Smith">
       </div>
       <div>
         <label for="name">User Name : </label><br>
-        <input type="text" name="username" placeholder="JamesBond123">
+        <input type="text" name="username" placeholder="JohnSmith">
       </div>
       <div>
       <label for="email">Email : </label><br>
@@ -23,7 +33,7 @@
       </div>
       <div>
       <label for="password">Password : </label><br>
-      <input type="password" name="password">
+      <input type="password" name="password" placeholder="*********">
       </div>
       <div>
         <button type="submit">Sign Up</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -31,27 +41,32 @@
       </div>
     </div>
   </form>
- 
+ </div>
 
   <style>
+    .name{
+      width: 115px;
+    }
     body{
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-around;
+      flex-basis: 70% 30%;
       min-height: 90vh;
-      background-color: aqua;
+      background-color: rgb(239, 251, 245);
     }
     .container{
-      width: 250px;
-      height: 350px;
-      display:flex;
+      width: 350px;
+      height: 400px;
+      display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 1rem;
       border: 1px solid gray;
       border-radius: 10px;
-      background: rgb(83, 158, 255)
+      background: rgb(173, 237, 183);
+      font-family: monospace;
     }
     input{
       height: 30px;
@@ -59,10 +74,53 @@
       border-radius: 5px;
       border: none;
     }
-    .name{
-      width: 115px;
+    .left{
+      max-width: 600px;
+    }
+    .contain h1{
+      font-size: 5rem;
+      font-weight: 100;
+      line-height: 5rem;
+      line-break: auto;
+      margin-top: 0rem;
+      font-family: 'Source Serif Pro', serif;
+    }
+    .contain p{
+      margin-top: -2rem;
+      font-size: 1.5rem;
+      font-family: 'Source Serif Pro', serif;
+      font-weight: 100;
+    }
+    .darkbtn{
+    text-decoration: none;
+    color: white;
+    background-color: rgb(52, 186, 45);
+    padding: .6rem 1rem;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    margin-top:2rem;
     }
     
+    @media only screen and (max-width: 600px) {
+      .container{
+        width: 250px;
+        height: 300px;
+        position: absolute;
+        top: 2rem;
+        flex-wrap: wrap;
+      }
+      .contain{
+        position: absolute;
+        top: 350px;
+      }
+      .contain .h2{
+        position: absolute;
+        top: -343px;
+      }
+      body{
+        display: block;
+      }
+    }
   </style>
 </body>
 </html>
