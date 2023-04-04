@@ -19,7 +19,9 @@
       <a class="darkbtn" href="/signup">Get Started!</a>&nbsp;&nbsp;
     </div>
   </div>
+  
   <div class="right">
+    <div class="h2 text" style="font-size: small;"><span style="color:rgb(31, 93, 31)">|</span> TODOAPP</div>
   <form action="api/users" method="get">
       <div class="container">
         <div>
@@ -36,6 +38,10 @@
         </div>
       </div>  
     </form>
+    <h1 class="text">Stay on top of your day with To Do List app!</h1>
+    <p class="text">Welcome to our innovative and user-friendly To Do List app, designed to 
+      help you organize and streamline your daily tasks and increase your productivity!</p>
+    <a class="darkbtn text" href="/signup">Get Started!</a>&nbsp;&nbsp;
   </div>
   
   <style>
@@ -59,6 +65,7 @@
       border-radius: 10px;
       background: rgb(173, 237, 183);
       font-family: monospace;
+      margin: 1rem;
     }
     input{
       height: 30px;
@@ -92,28 +99,46 @@
     border-radius: 5px;
     margin-top:2rem;
     }
-    
+    @media only screen and (min-width: 600px) {
+      .text{
+        display: none;
+      }
+    }
     @media only screen and (max-width: 600px) {
       .container{
         width: 250px;
         height: 300px;
-        position: absolute;
-        top: 2rem;
-        flex-wrap: wrap;
-      }
-      .contain{
-        position: absolute;
-        top: 350px;
-      }
-      .contain .h2{
-        position: absolute;
-        top: -343px;
+        float: right;
+        margin: 1rem;
       }
       body{
-        display: block;
+        display: inline;
+      }
+      .left{
+        display: none;
+      }
+      .right{
+        padding: 1rem;
       }
     }
-
+    @media only screen and (max-width: 350px) {
+      .container{
+        width: 250px;
+        height: 300px;
+        float: right;
+      }
+      body{
+        display: flex;
+        flex-direction: column;
+      }
+      .left{
+        display: none;
+      }
+      .right{
+        padding: 1rem;
+        padding-top: 0;
+      }
+    }
   </style>
 </body>
 </html>
